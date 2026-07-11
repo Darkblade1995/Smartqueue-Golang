@@ -85,25 +85,6 @@ updated        max retries reached?
                           Postgres updated
 ```
 
----
-
-## Why This Project Is Senior-Level
-
-Most portfolio projects are CRUDs. SmartQueue solves **infrastructure problems**:
-
-| Problem | Solution |
-|---|---|
-| Concurrent access to shared queue | `ZPopMin` atomic Redis operation |
-| Two workers taking the same job | Atomic pop — one operation, indivisible |
-| Job lost on server restart | Dual persistence: Redis + PostgreSQL |
-| External service goes down | Exponential backoff with jitter |
-| Job fails forever silently | Dead Letter Queue with error tracking |
-| Thundering herd on retry | Random jitter breaks synchronized retries |
-| Metrics missing under concurrency | `sync/atomic` — hardware-level thread safety |
-| Server crash mid-job | Graceful shutdown with `WaitGroup` |
-| Open API endpoints | API Key authentication with SHA256 hashing |
-
----
 
 ## Stack
 
